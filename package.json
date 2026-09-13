@@ -1,11 +1,12 @@
 {
   "name": "@electerm/electerm-themes",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "electerm themes imported from iTerm2-Color-Schemes",
   "main": "dist/index.js",
   "scripts": {
     "install": "node ./build/install.js",
     "build": "node ./build/build.js",
+    "test": "node --test test/build.test.js",
     "prepublish": "npm run build",
     "pub": "node ./build/pub.js"
   },
