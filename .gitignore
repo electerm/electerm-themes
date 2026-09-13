@@ -108,5 +108,3 @@ dist
 /temp/
 /dist/
 /*.txt
-/build/iTerm2-Color-Schemes
-/src/themes

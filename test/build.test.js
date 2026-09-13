@@ -4,7 +4,7 @@ const { test } = require('node:test')
 const path = require('node:path')
 const { build, readThemeFiles } = require('../build/build.js')
 
-test("includes dicker's hackdio in the custom theme inputs", () => {
+test("includes dicker's hackdio in the theme inputs", () => {
   const themeDir = path.resolve(__dirname, '../themes')
   const themes = readThemeFiles(themeDir)
   const themePath = path.resolve(themeDir, 'dickers-hackdio.txt')

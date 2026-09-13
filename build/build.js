@@ -1,12 +1,14 @@
 /**
- * read themes from https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/electerm
+ * build themes from local ./themes folder
+ * themes are vendored locally to keep builds stable
+ * (no longer fetched from upstream iTerm2-Color-Schemes)
  */
 
 const {
   resolve
 } = require('path')
 const {
-  cp, mkdir, rm
+  mkdir, rm
 } = require('shelljs')
 const fs = require('fs')
 const json5 = require('json5')
@@ -19,26 +21,18 @@ const readThemeFiles = (folder) => {
 }
 
 const build = () => {
-  const folder = resolve(
-    __dirname,
-    'iTerm2-Color-Schemes/electerm'
-  )
-  const customFolder = resolve(__dirname, '../themes')
+  const themesFolder = resolve(__dirname, '../themes')
   const distFolder = resolve(__dirname, '../dist')
   const distThemesFolder = resolve(distFolder, 'themes')
-  const all = [
-    ...readThemeFiles(folder),
-    ...readThemeFiles(customFolder)
-  ]
+  const all = readThemeFiles(themesFolder)
 
   rm('-rf', distFolder)
-  mkdir('-p', distFolder)
-  cp('-r', folder, distThemesFolder)
-  fs.readdirSync(customFolder)
+  mkdir('-p', distThemesFolder)
+  fs.readdirSync(themesFolder)
     .filter(file => file.endsWith('.txt'))
     .forEach(file => {
       fs.copyFileSync(
-        resolve(customFolder, file),
+        resolve(themesFolder, file),
         resolve(distThemesFolder, file)
       )
     })
