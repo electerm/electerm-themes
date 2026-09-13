@@ -7,7 +7,7 @@
     "build": "node ./build/build.js",
     "test": "node --test test/build.test.js",
     "prepublish": "npm run build",
-    "pub": "node ./build/pub.js"
+    "pub": "npm publish --access public"
   },
   "license": "MIT",
   "repository": {
